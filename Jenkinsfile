@@ -5,7 +5,6 @@ pipeline {
         dockerimagename = "hamza6145/my-python-project-app:latest"
         registryCredential = 'dockerhub-credentials'
         dockerImage = ""
-        kubeconfigCredential = 'minikube-kubeconfig'   // Jenkins secret file for kubeconfig
     }
 
     stages {
@@ -36,8 +35,7 @@ pipeline {
         stage('Deploy to Kubernetes (Minikube)') {
             steps {
                 script {
-                    withCredentials([file(credentialsId: kubeconfigCredential, variable: 'KUBECONFIG')]) {
-                        sh 'kubectl config use-context minikube'
+                    withKubeConfig([credentialsId: 'minikube-kubeconfig']) {
                         sh 'kubectl apply -f k8s/deployment.yaml'
                         sh 'kubectl apply -f k8s/service.yaml'
                     }
