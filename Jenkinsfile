@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout Source') {
             steps {
-                git branch: 'main', url: 'https://github.com/Hamza6145/jenkins-kubernetes-deployment.git'
+                git 'https://github.com/Hamza6145/jenkins-kubernetes-deployment.git'
             }
         }
 
