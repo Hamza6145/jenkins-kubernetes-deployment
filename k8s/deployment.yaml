@@ -15,7 +15,7 @@ spec:
       containers:
       - name: flask-tv-app
         image: hamza6145/my-python-project-app:latest
-        imagePullPolicy: Never   # find the image from my local machine
+        imagePullPolicy: IfNotPresent   # find the image from my local machine
         ports:
         - containerPort: 5000
         env:
