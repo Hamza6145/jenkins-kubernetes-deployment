@@ -1,0 +1,26 @@
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flask-tv-app
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - SQLALCHEMY_DATABASE_URI=sqlite:////app/instance/tv_recommendation_app.db
+    depends_on:
+      - dbcli
+    volumes:
+      - tv_db_data:/app/instance
+
+  dbcli:
+    image: nouchka/sqlite3  # lightweight image with sqlite3 CLI
+    container_name: sqlite-client
+    volumes:
+      - tv_db_data:/db
+    entrypoint: tail -f /dev/null  # keep container running so you can exec into it
+
+volumes:
+  tv_db_data:

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+
+<div class="global-search-bar">
+    <form action="/search" method="GET" class="search-form">
+        <input 
+            type="text" 
+            name="q" 
+            placeholder="Search for users or TV shows" 
+            class="search-input"
+            required
+        >
+        <button type="submit" class="search-button">Search</button>
+    </form>
+</div>
+
+<!-- Gantt Chart Button -->
+<div class="gantt_chart-button">
+    <a href="/gantt_chart" class="button">View Gantt Chart</a>
+</div>
+
+
+<h2>All Users and Their Searches</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Searches</th>
+            <th>Recommendations</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>
+                <ul>
+                    {% for tv_show in user.tv_shows %}
+                    <li>{{ tv_show.tv_show.season_name }}</li>
+                    <li>{{ tv_show.tv_show.genre }}</li>
+                    <br>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                {% if user.user_recommendation %}
+                <ul>
+                    {% for recommended_shows in user.user_recommendations %}
+                    <li>{{  user_recommendation.user_recommendation.recommended_shows }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p></p>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

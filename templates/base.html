@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TV Show Recommendation's{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="main-content">
+    <header>
+        <h1 class="floating">TV Show Recommendation's</h1>
+    </header>
+
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <script>
+                $(document).ready(function() {
+                    alert("{{ messages[0] }}");
+                });
+            </script>
+          {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    ©️ 2025-2030 TV Show Recommendation's - All Rights Reserved.
+    Contact Email: <a href="mailto:hamzadubli8@gmail.com">hamzadubli8@gmail.com</a>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
+

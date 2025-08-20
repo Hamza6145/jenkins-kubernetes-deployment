@@ -1,0 +1,24 @@
+<!-- templates/recommendations.html -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="global-search-bar">
+  <form action="/search" method="GET" class="search-form">
+      <input 
+          type="text" 
+          name="q" 
+          placeholder="Search for users or TV shows" 
+          class="search-input"
+          required
+      >
+      <button type="submit" class="search-button">Search</button>
+  </form>
+</div>
+  <h2>Recommended TV Shows</h2>
+  <ul>
+    {% for show in recommendations %}
+      <li>{{show }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<div class="global-search-bar">
+    <form action="/search" method="GET" class="search-form">
+        <input 
+            type="text" 
+            name="q" 
+            placeholder="Search for users or TV shows" 
+            class="search-input"
+            required
+        >
+        <button type="submit" class="search-button">Search</button>
+    </form>
+</div>
+
+<h2>Welcome, {{ user.username }}</h2>
+<h2>TV Shows</h2>
+<ul>
+    {% for show in user.tv_shows %}
+    <li>{{ show.tv_show.season_name }} ({{ show.tv_show.genre }})</li>
+    {% endfor %}
+</ul>
+<a href="/add_tv_show/{{ user.id }}">Add TV Show</a>
+
+<form action="{{ url_for('recommend_from_profile', user_id=user.id) }}" method="post">
+    <button type="submit">Recommend</button>
+</form>
+{% endblock %}

@@ -1,0 +1,264 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* General body and layout setup */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    background: url("/static/background.jpg") no-repeat center center / cover;
+    color: #f0f0f0;
+}
+
+/* Main content area takes remaining space so footer stays at bottom */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center horizontally */
+    justify-content: flex-start; /* start at the top */
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(90deg, #07242a, #0f4c5c);
+    color: #fff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: #fff;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #e40f0f;
+}
+
+/* Page header */
+h1 {
+    text-align: center;
+    margin: 30px 0;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    animation: fadeIn 1s ease both; /* NEW: fade-in effect */
+}
+
+/* Modern container with internal scroll */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 25px 30px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    animation: fadeInUp 0.8s ease both, glow 2.5s infinite ease-in-out;
+    color: #fff;
+    position: relative;
+    overflow-y: scroll;   /* force scrollbar always visible */
+    overflow-x: hidden;
+    max-height: 400px;
+}
+
+/* Shiny effect */
+.container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+    animation: shine 5s infinite;
+}
+
+/* Optional: style container scrollbar */
+.container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: rgba(244, 241, 241, 0.5);
+    border-radius: 4px;
+}
+
+.container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Glow animation */
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px rgba(228, 15, 15, 0.5), 0 0 20px rgba(228, 15, 15, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(228, 15, 15, 0.8), 0 0 40px rgba(228, 15, 15, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(228, 15, 15, 0.5), 0 0 20px rgba(228, 15, 15, 0.3);
+    }
+}
+
+/* Shine animation */
+@keyframes shine {
+    0% { left: -75%; }
+    100% { left: 125%; }
+}
+
+/* Fade in up */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* NEW: fadeIn animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* NEW: floating gentle animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-5px); }
+}
+
+/* NEW: pulse glowing animation */
+@keyframes pulse {
+    0%   { text-shadow: 0 0 5px #e40f0f; }
+    50%  { text-shadow: 0 0 15px #e40f0f; }
+    100% { text-shadow: 0 0 5px #e40f0f; }
+}
+
+/* Card style */
+.card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-left: 4px solid #e40f0f;
+    border-radius: 12px;
+    padding: 20px 25px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease both; /* NEW: fade-in effect on cards */
+}
+
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.3);
+}
+
+/* Headings */
+h2 {
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.form-group {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form input[type="password"],
+form select {
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+form input:focus {
+    border-color: #e40f0f;
+    background: rgba(255,255,255,0.2);
+    outline: none;
+}
+
+form button {
+    background: linear-gradient(90deg, #e40f0f, #ff4b2b);
+    color: #fff;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(228, 15, 15, 0.4);
+}
+
+/* Links */
+a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #e40f0f;
+}
+
+/* Footer styling */
+.site-footer {
+    text-align: center;
+    padding: 15px 10px;
+    color: #ccc;
+    font-size: 0.9em;
+    background: linear-gradient(90deg, #07242a, #0f4c5c);
+    backdrop-filter: blur(4px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0 0 8px 8px;
+}
+
+/* NEW: optional pulse on footer title if you want */
+.site-footer a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+    color: #e40f0f;
+    text-decoration: underline;
+}

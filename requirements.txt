@@ -1,0 +1,10 @@
+Flask
+Flask-SQLAlchemy
+Werkzeug
+SQLAlchemy
+scikit-learn
+pandas
+numpy
+scipy
+plotly
+joblib

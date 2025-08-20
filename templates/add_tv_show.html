@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Add TV Show{% endblock %}
+
+{% block content %}
+<!-- Global Search Bar -->
+<div class="global-search-bar">
+    <form action="/search" method="GET" class="search-form">
+        <input 
+            type="text" 
+            name="q" 
+            placeholder="Search for users or TV shows" 
+            class="search-input"
+            required
+        >
+        <button type="submit" class="search-button">Search</button>
+    </form>
+</div>
+
+<!-- Add TV Show Form -->
+<h2>Add TV Show</h2>
+<form action="/add_tv_show/{{ user_id }}" method="POST" class="add-tv-show-form">
+    <div class="form-group">
+        <label for="season_name">Season Name:</label>
+        <input type="text" id="season_name" name="season_name" required>
+    </div>
+    <div class="form-group">
+        <label for="total_episodes">Total Episodes:</label>
+        <input type="number" id="total_episodes" name="total_episodes" required>
+    </div>
+    <div class="form-group">
+        <label for="cast_main_roles">Cast Main Roles:</label>
+        <input type="text" id="cast_main_roles" name="cast_main_roles" required>
+    </div>
+    <div class="form-group">
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" required>
+    </div>
+    <div class="form-group">
+        <label for="year_released">Year Released:</label>
+        <input type="number" id="year_released" name="year_released" required>
+    </div>
+    <div class="form-group">
+        <label for="platform">Platform:</label>
+        <input type="text" id="platform" name="platform" required>
+    </div>
+    <button type="submit">Add</button>
+</form>
+{% endblock %}

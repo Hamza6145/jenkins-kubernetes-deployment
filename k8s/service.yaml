@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-tv-app-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: flask-tv-app
+  ports:
+  - port: 5000       # Port exposed by the service
+    targetPort: 5000 # Port in the container
